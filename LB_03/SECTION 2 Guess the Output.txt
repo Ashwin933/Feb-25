@@ -1,0 +1,337 @@
+SECTION 2: Guess the Output 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 1:  
+public class NestedLoopOutput { 
+    public static void main(String[] args) { 
+        for (int i = 1; i <= 3; i++) { 
+            for (int j = 1; j <= 2; j++) { 
+                System.out.print(i + " " + j + " "); 
+            } 
+            System.out.println(); 
+ 
+ 
+        } 
+    } 
+} 
+// Guess the output of this nested loop. 
+
+Dry Run:
+Let's analyze the nested loops step by step.
+
+(a) Outer Loop (i) runs from 1 to 3.
+(b) Inner Loop (j) runs from 1 to 2.
+(c) The System.out.print(i + " " + j + " "); prints i and j on the same line.
+(d) After the inner loop completes, System.out.println(); moves to a new line.
+
+Step-by-step execution:
+___________________________________________________
+|i (Outer)  |	j (Inner)	|	Output	   |
+|___________|___________________|__________________|	
+|1	    |	1		|	1 1	   |
+|1	    |	2		|	1 2	   |
+|-	    |	-		|	(New Line) |
+|2	    |	1		|	2 1	   |
+|2	    |	2		|	2 2	   |
+|-	    |	-		|	(New Line) |
+|3	    |	1		|	3 1	   |
+|3	    |	2		|	3 2        |
+|-	    |	-		|	(New Line) |
+|___________|___________________|__________________|
+
+Guessed Output:
+
+1 1 1 2 
+2 1 2 2 
+3 1 3 2 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 2:  
+public class DecrementingLoop { 
+    public static void main(String[] args) { 
+        int total = 0; 
+        for (int i = 5; i > 0; i--) { 
+            total += i; 
+            if (i == 3) continue; 
+            total -= 1; 
+        } 
+        System.out.println(total); 
+    } 
+} 
+// Guess the output of this loop. 
+
+
+Dry Run:
+Let's analyze the loop execution step by step.
+
+Initial Values:
+total = 0
+i starts at 5 and decrements until 1
+Loop Execution Breakdown:
+	
++------+-----------------------+--------------------------------+---------------------+--------------+
+| i    | total += i            | if (i == 3) continue           | total -= 1          | total (final)|
++------+-----------------------+--------------------------------+---------------------+--------------+
+| 5    | total = 0 + 5 = 5     | No skip             		| total = 5 - 1 = 4   | 4            |
+| 4    | total = 4 + 4 = 8     | No skip             		| total = 8 - 1 = 7   | 7            |
+| 3    | total = 7 + 3 = 10    | Continue (skips total -= 1)    | -        	      | 10           |
+| 2    | total = 10 + 2 = 12   | No skip          		| total = 12 - 1 = 11 | 11           |
+| 1    | total = 11 + 1 = 12   | No skip         		| total = 12 - 1 = 11 | 11           |
++------+-----------------------+--------------------------------+---------------------+--------------+
+
+Guessed Output:
+11
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 3:  
+public class WhileLoopBreak { 
+    public static void main(String[] args) { 
+        int count = 0; 
+        while (count < 5) { 
+            System.out.print(count + " "); 
+            count++; 
+            if (count == 3) break; 
+        } 
+        System.out.println(count); 
+    } 
+} 
+// Guess the output of this while loop. 
+
+Dry Run:
+Let's analyze the while loop execution step by step.
+
+Initial Values:
+count = 0
+Condition: while (count < 5)
+Loop Execution Breakdown:
++-----------+--------------------+--------+---------+------------------------+-------------------+
+| Iteration | count before print | Output | count++ | if (count == 3) break; | count after break |
++-----------+--------------------+--------+---------+------------------------+-------------------+
+| 1         | 0                  | 0      | 1       | No Break               | 1                 |
+| 2         | 1                  | 1      | 2       | No Break      	     | 2                 |
+| 3         | 2                  | 2      | 3       | Break occurs   	     | 3                 |
++-----------+--------------------+--------+---------+------------------------+-------------------+
+
+After breaking, System.out.println(count); prints 3.
+
+Guessed Output:
+
+0 1 2 3
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 4:  
+public class DoWhileLoop { 
+    public static void main(String[] args) { 
+        int i = 1; 
+        do { 
+            System.out.print(i + " "); 
+            i++; 
+        } while (i < 5); 
+        System.out.println(i); 
+    } 
+} 
+// Guess the output of this do-while loop.
+
+Dry Run:
+Let's analyze the do-while loop execution step by step.
+
+Initial Values:
+i = 1
+The do-while loop executes at least once before checking the condition.
+Loop Execution Breakdown:
+
++-----------+----------------+--------+-----+-------------------------+
+| Iteration | i before print | Output | i++ | Condition while (i < 5) |
++-----------+----------------+--------+-----+-------------------------+
+| 1         | 1              | 1      | 2   | True                    |
+| 2         | 2              | 2      | 3   | True                    |
+| 3         | 3              | 3      | 4   | True                    |
+| 4         | 4              | 4      | 5   | False (Loop Ends)       |
++-----------+----------------+--------+-----+-------------------------+
+
+
+After the loop exits, System.out.println(i); prints 5.
+
+Guessed Output:
+
+1 2 3 4 5
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 5:  
+public class ConditionalLoopOutput { 
+    public static void main(String[] args) { 
+        int num = 1; 
+        for (int i = 1; i <= 4; i++) { 
+            if (i % 2 == 0) { 
+                num += i; 
+            } else { 
+                num -= i; 
+            } 
+        } 
+        System.out.println(num); 
+    } 
+} 
+// Guess the output of this loop. 
+
+Dry Run:
+Let's analyze the execution of the for loop step by step.
+
+Initial Values:
+num = 1
+Loop runs for i = 1 to 4
+Loop Execution Breakdown:
+
++-----------+---+------------------------+-------------+---------------------+
+| Iteration | i | Condition (i % 2 == 0) | Operation   | num (Updated Value) |
++-----------+---+------------------------+-------------+---------------------+
+| 1         | 1 | 1 % 2 != 0 (False)     | num -= 1    | 1 - 1 = 0           |
+| 2         | 2 | 2 % 2 == 0 (True)      | num += 2    | 0 + 2 = 2   	     |
+| 3         | 3 | 3 % 2 != 0 (False)     | num -= 3    | 2 - 3 = -1  	     |
+| 4         | 4 | 4 % 2 == 0 (True)      | num += 4    | -1 + 4 = 3  	     |
++-----------+---+------------------------+-------------+---------------------+
+
+Guessed Output:
+
+3
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 6:  
+public class IncrementDecrement { 
+    public static void main(String[] args) { 
+        int x = 5; 
+        int y = ++x - x-- + --x + x++; 
+        System.out.println(y); 
+    } 
+} 
+// Guess the output of this code snippet.
+
+Dry Run of the Code:
+Let's analyze each step carefully, considering pre-increment (++x) and post-decrement (x--) operations.
+
+Initial Value:
+x = 5
+
+Expression Breakdown:
+int y = ++x - x-- + --x + x++;
+
+We evaluate it step by step:
+
++----+----------------------------------------------+-------+---------------------------+
+| #  | Operation                                    | x     | Expression Evaluated      |
++----+----------------------------------------------+-------+---------------------------+
+| 1  | ++x (Pre-increment) → x = x + 1        	    | x = 6 | 6 - x-- + --x + x++       |
+| 2  | x-- (Post-decrement) → Use x = 6, then x = 5 | x = 5 | 6 - 6 + --x + x++         |
+| 3  | --x (Pre-decrement) → x = x - 1      	    | x = 4 | 6 - 6 + 4 + x++           |
+| 4  | x++ (Post-increment) → Use x = 4, then x = 5 | x = 5 | 6 - 6 + 4 + 4             |
++----+----------------------------------------------+-------+---------------------------+
+
+
+Guessed Output:
+
+8
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 7:  
+public class NestedIncrement { 
+    public static void main(String[] args) { 
+        int a = 10; 
+        int b = 5; 
+        int result = ++a * b-- - --a + b++; 
+        System.out.println(result); 
+    } 
+} 
+// Guess the output of this code snippet.
+
+Dry Run of the Code:
+Let's evaluate the given expression step by step, considering pre-increment (++a), post-decrement (b--), pre-decrement (--a), and post-increment (b++).
+
+Initial Values:
+a = 10
+b = 5
+Expression Breakdown:
+int result = ++a * b-- - --a + b++;
+
++----+-----------------------------------------------+----------+---------+----------------------------+
+| #  | Operation                                     | a Value  | b Value | Expression Evaluated       |
++----+-----------------------------------------------+----------+---------+----------------------------+
+| 1  | ++a (Pre-increment) → a = a + 1               | a = 11   | b = 5   | 11 * b-- - --a + b++       |
+| 2  | b-- (Post-decrement) → Use b = 5, then b = 4  | a = 11   | b = 4   | 11 * 5 - --a + b++         |
+| 3  | --a (Pre-decrement) → a = a - 1               | a = 10   | b = 4   | 11 * 5 - 10 + b++          |
+| 4  | b++ (Post-increment) → Use b = 4, then b = 5  | a = 10   | b = 5   | 11 * 5 - 10 + 4            |
++----+-----------------------------------------------+----------+---------+----------------------------+
+  
+
+Guessed Output:
+
+49
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Snippet 8:  
+public class LoopIncrement { 
+    public static void main(String[] args) { 
+        int count = 0; 
+        for (int i = 0; i < 4; i++) { 
+            count += i++ - ++i; 
+        } 
+        System.out.println(count); 
+    } 
+ 
+ 
+} 
+// Guess the output of this code snippet.
+
+Dry Run of the Code:
+Let's analyze the loop execution step by step.
+
+Initial Values:
+count = 0
+i = 0
+
+Loop Execution:
+The loop runs while i < 4, and within each iteration, we evaluate:
+count += i++ - ++i;
+Here, i++ (post-increment) uses the value of i first, then increments it, while ++i (pre-increment) increments i first, then uses the new value.
+
++-------+----------+---------------------------------+-----------+-----------------------+
+| Iter. | i Before | Expression (i++ - ++i)    	     | i After   | count Update          |
++-------+----------+---------------------------------+-----------+-----------------------+
+| 1st   | 0        | 0 - 2 (i++ → 0, then ++i → 2)   | 2         | count = 0 + (-2) = -2 |
+| 2nd   | 2        | 2 - 4 (i++ → 2, then ++i → 4)   | 4         | count = -2 + (-2) = -4|
++-------+----------+---------------------------------+-----------+-----------------------+
+  
+
+At this point, i = 4, which terminates the loop since i < 4 is now false.
+
+Final Output
+-4
+
+
+---------------------------------XX----------------------------------------------THE-END----------------------------------XX----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
