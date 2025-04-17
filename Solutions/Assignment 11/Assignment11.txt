@@ -1,0 +1,30 @@
+mysql> SELECT *
+    -> FROM orders
+    -> WHERE cnum = (
+    ->     SELECT cnum
+    ->     FROM customers
+    ->     WHERE cname = 'Cisneros'
+    -> );
+
+-------------------------------------------------------
+
+mysql> SELECT DISTINCT c.cname, c.rating
+    -> FROM customers c
+    -> JOIN orders o ON c.cnum = o.cnum
+    -> WHERE o.amt > (
+    ->     SELECT AVG(amt) FROM orders
+    -> );
+
+-------------------------------------------------------
+
+mysql> SELECT s.snum, s.sname, SUM(o.amt) AS total_sales
+    -> FROM salespeople s
+    -> JOIN orders o ON s.snum = o.snum
+    -> GROUP BY s.snum, s.sname
+    -> HAVING SUM(o.amt) > (
+    ->     SELECT MAX(amt) FROM orders
+    -> );
+
+-------------------------------------------------------
+
+
