@@ -1,0 +1,50 @@
+
+
+-- Create SALESPEOPLE table
+CREATE TABLE SALESPEOPLE (
+    Snum INT(4),
+    Sname VARCHAR(10),
+    City VARCHAR(10),
+    Comm FLOAT(3,2)
+);
+
+-- Insert values into SALESPEOPLE
+INSERT INTO SALESPEOPLE (Snum, Sname, City, Comm) VALUES
+(1001, 'Peel', 'London', 0.12),
+(1002, 'Serres', 'San Jose', 0.13),
+(1004, 'Motika', 'London', 0.11),
+(1007, 'Rifkin', 'Barcelona', 0.15),
+(1003, 'Axelrod', 'New York', 0.10);
+
+-- Create CUSTOMERS table
+CREATE TABLE CUSTOMERS (
+    Cnum INT(4),
+    Cname VARCHAR(10),
+    City VARCHAR(10),
+    Rating INT(4),
+    Snum INT(4)
+);
+
+-- Insert values into CUSTOMERS
+INSERT INTO CUSTOMERS (Cnum, Cname, City, Rating, Snum) VALUES
+(2001, 'Hoffman', 'London', 100, 1001),
+(2002, 'Giovanni', 'Rome', 200, 1003),
+(2003, 'Liu', 'San Jose', 200, 1002),
+(2004, 'Grass', 'Berlin', 300, 1002),
+(2006, 'Clemens', 'London', 100, 1001),
+(2008, 'Cisneros', 'San Jose', 300, 1007),
+(2007, 'Pereira', 'Rome', 100, 1004);
+
+-- Create ORDERS table
+CREATE TABLE ORDERS (
+    Onum INT(4),
+    Amt FLOAT(7,2),
+    Odate DATE,
+    Cnum INT(4),
+    Snum INT(4)
+);
+
+-- Insert values into ORDERS
+INSERT INTO ORDERS (Onum, Amt, Odate, Cnum, Snum) VALUES
+(3001, 18.69, '1990-10-03', 2008, 1007),
+(3003, 767.19, '1990-10-03', 2001, 1001);
